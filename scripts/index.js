@@ -47,7 +47,7 @@ const fetchVideos = function(searchTerm, callback) {
 // TEST IT! Grab an example API response and send it into the function - make sure
 // you get back the object you want.
 const decorateResponse = function(response) {
-  store.videos = response.items.map(function(item){
+  return response.items.map(function(item){
     return {
       id: item.id.videoId,
       title: item.snippet.title,
@@ -77,7 +77,7 @@ const generateVideoItemHtml = function(video) {
 // objects and sets the array as the value held in store.items
 // TEST IT!
 const addVideosToStore = function(videos) {
-
+  store.videos = decorateResponse(videos);
 };
 
 // TASK:
