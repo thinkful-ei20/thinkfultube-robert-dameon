@@ -95,8 +95,6 @@
 // When DOM is ready:
 $(function () {
   // TASK:
-
-  
   videoList.bindEventListeners();
   // 1. Run `handleFormSubmit` to bind the event listener to the DOM
 });

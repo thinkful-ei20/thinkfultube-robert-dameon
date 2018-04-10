@@ -6,8 +6,9 @@ const videoList = (function(){
   let generateListItem = function(video){
     return `
     <li>
-    <img src="${video.thumbnail}"
+    <a href="https://www.youtube.com/watch?v=${video.id}" target="blank"><img src="${video.thumbnail}"></a>
     <p>${video.title}<p>
+    <p><a href="https://www.youtube.com/channel/${video.channelId}" target="blank">More From This Creator</a?</p>
     </li>
   `;
   };
