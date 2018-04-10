@@ -102,11 +102,22 @@ const render = function() {
 //   g) Inside the callback, run the `render` function 
 // TEST IT!
 const handleFormSubmit = function() {
-
+  $('#searchForm').on('submit',function(event){
+    event.preventDefault();
+    
+    let queryTarget = $('#search-term').val();
+    $('#search-term').val('');
+    fetchVideos(queryTarget, function(response){
+      addVideosToStore(response);
+      render();
+    });
+    
+  });
 };
 
 // When DOM is ready:
 $(function () {
   // TASK:
+  handleFormSubmit();
   // 1. Run `handleFormSubmit` to bind the event listener to the DOM
 });
