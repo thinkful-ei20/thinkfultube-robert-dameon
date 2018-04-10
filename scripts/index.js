@@ -1,5 +1,5 @@
 'use strict';
-/* global store, APIobj */
+/* global  videoList */
 
 /*
   We want our store to hold a `videos` array of "decorated" objects - i.e. objects that
@@ -41,15 +41,15 @@
 // 1. Create a `generateVideoItemHtml` function that receives the decorated object
 // 2. Using the object, return an HTML string containing all the expected data
 // TEST IT!
-const generateVideoItemHtml = function(video) {
-  console.log(video);
-  return `
-    <li>
-    <img src="${video.thumbnail}"
-    <p>${video.title}<p>
-    </li>
-  `;
-};
+// const generateVideoItemHtml = function(video) {
+//   console.log(video);
+//   return `
+//     <li>
+//     <img src="${video.thumbnail}"
+//     <p>${video.title}<p>
+//     </li>
+//   `;
+// };
 
 
 // TASK:
@@ -62,10 +62,10 @@ const generateVideoItemHtml = function(video) {
 // 2. Map through `store.videos`, sending each `video` through your `generateVideoItemHtml`
 // 3. Add your array of DOM elements to the appropriate DOM element
 // TEST IT!
-const render = function() {
-  $('.results').html(store.videos.map(video => generateVideoItemHtml(video)));
+// const render = function() {
+//   $('.results').html(store.videos.map(video => videoList.generateListItem(video)));
 
-};
+// };
 
 // TASK:
 // 1. Create a `handleFormSubmit` function that adds an event listener to the form
@@ -78,25 +78,25 @@ const render = function() {
 //   f) Inside the callback, add the decorated response into your store using the `addVideosToStore` function
 //   g) Inside the callback, run the `render` function 
 // TEST IT!
-const handleFormSubmit = function() {
-  $('#searchForm').on('submit',function(event){
-    event.preventDefault();
+//const handleFormSubmit = function() {
+// $('#searchForm').on('submit',function(event){
+//   event.preventDefault();
     
-    let queryTarget = $('#search-term').val();
-    $('#search-term').val('');
-    APIobj.fetchVideos(queryTarget, function(response){
-      store.setVideos(response);
-      render();
-    });
+//   let queryTarget = $('#search-term').val();
+//   $('#search-term').val('');
+//   APIobj.fetchVideos(queryTarget, function(response){
+//     store.setVideos(response);
+//     videoList.render();
+//   });
    
-  });
-};
+//});
+//};
 
 // When DOM is ready:
 $(function () {
   // TASK:
 
-  handleFormSubmit();
   
+  videoList.bindEventListeners();
   // 1. Run `handleFormSubmit` to bind the event listener to the DOM
 });
