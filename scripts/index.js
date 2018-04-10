@@ -48,7 +48,7 @@ const fetchVideos = function(searchTerm, callback) {
 // you get back the object you want.
 const decorateResponse = function(response) {
   store.videos = response.items.map(function(item){
-   return {
+    return {
       id: item.id.videoId,
       title: item.snippet.title,
       thumbnail: item.snippet.thumbnails.medium.url,
@@ -62,8 +62,15 @@ const decorateResponse = function(response) {
 // 2. Using the object, return an HTML string containing all the expected data
 // TEST IT!
 const generateVideoItemHtml = function(video) {
-
+  console.log(video);
+  return `
+    <li>
+    <img src="${video.thumbnail}"
+    <p>${video.title}<p>
+    </li>
+  `;
 };
+
 
 // TASK:
 // 1. Create a `addVideosToStore` function that receives an array of decorated video 
