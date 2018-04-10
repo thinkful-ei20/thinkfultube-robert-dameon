@@ -36,16 +36,6 @@
 // WILL have to dig into several nested properties!
 // TEST IT! Grab an example API response and send it into the function - make sure
 // you get back the object you want.
-const decorateResponse = function(response) {
-  return response.items.map(function(item){
-    return {
-      id: item.id.videoId,
-      title: item.snippet.title,
-      thumbnail: item.snippet.thumbnails.medium.url,
-    };
-  });
-  
-};
 
 // TASK:
 // 1. Create a `generateVideoItemHtml` function that receives the decorated object
@@ -66,9 +56,6 @@ const generateVideoItemHtml = function(video) {
 // 1. Create a `addVideosToStore` function that receives an array of decorated video 
 // objects and sets the array as the value held in store.items
 // TEST IT!
-const addVideosToStore = function(videos) {
-  store.videos = decorateResponse(videos);
-};
 
 // TASK:
 // 1. Create a `render` function
@@ -98,7 +85,7 @@ const handleFormSubmit = function() {
     let queryTarget = $('#search-term').val();
     $('#search-term').val('');
     APIobj.fetchVideos(queryTarget, function(response){
-      addVideosToStore(response);
+      store.setVideos(response);
       render();
     });
    
