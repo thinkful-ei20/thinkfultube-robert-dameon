@@ -1,4 +1,5 @@
 'use strict';
+/* global store */
 const API_KEY = 'AIzaSyAKxpNyQyVJTxORQDGTpGcMOt0BS6Adg7I';
 
 /*
@@ -13,9 +14,7 @@ const API_KEY = 'AIzaSyAKxpNyQyVJTxORQDGTpGcMOt0BS6Adg7I';
   }
 
 */
-const store = {
-  videos: [],
-};
+
 
 // TASK: Add the Youtube Search API Base URL here:
 // Documentation is here: https://developers.google.com/youtube/v3/docs/search/list#usage
@@ -86,7 +85,7 @@ const addVideosToStore = function(videos) {
 // 3. Add your array of DOM elements to the appropriate DOM element
 // TEST IT!
 const render = function() {
-  $('.results').html(store.videos.map(video => generateVideoItemHtml(video)));
+  $('.results').html(store.videos.items.map(video => generateVideoItemHtml(video)));
 
 };
 
@@ -108,16 +107,18 @@ const handleFormSubmit = function() {
     let queryTarget = $('#search-term').val();
     $('#search-term').val('');
     fetchVideos(queryTarget, function(response){
-      addVideosToStore(response);
+     addVideosToStore(response);
       render();
     });
-    
+   
   });
 };
 
 // When DOM is ready:
 $(function () {
   // TASK:
+
   handleFormSubmit();
+  
   // 1. Run `handleFormSubmit` to bind the event listener to the DOM
 });
