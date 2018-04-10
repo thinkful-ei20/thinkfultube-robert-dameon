@@ -49,7 +49,7 @@ const fetchVideos = function(searchTerm, callback) {
 const decorateResponse = function(response) {
   store.videos = response.items.map(function(item){
    return {
-      id: item.id,
+      id: item.id.videoId,
       title: item.snippet.title,
       thumbnail: item.snippet.thumbnails.medium.url,
     };
